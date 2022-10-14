@@ -4,6 +4,6 @@ const router = express.Router();
 
 router.route("/register").post(register)
 router.route("/login").post(login)
-router.route("update").patch(update)
+router.route("/update").patch(update)
 
 export default router;

@@ -2,6 +2,8 @@ import express from "express";
 const app = express()
 import connectdb from "./db/connect.js"
 import authRouter from "./router/authRoutes.js"
+import jobRouter from "./router/jobsRoutes.js"
+import "express-async-errors"
 //Middlewares
 import notFoundModule from "./middleware/not-found.js"
 import errorHandler from "./middleware/error-handler.js";
@@ -14,9 +16,10 @@ app.get("/", (req, res) => {
     res.send("welcome");
 })
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/jobs", jobRouter);
 app.use(notFoundModule);
 app.use(errorHandler);
-app.use(authRouter)
+app.use(authRouter);
 const port = process.env.PORT || 5000;
 
 const start = async () => {
@@ -29,4 +32,5 @@ const start = async () => {
         console.log(e);
     }
 }
+
 start()
