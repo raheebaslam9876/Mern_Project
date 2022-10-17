@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 const app = express()
 import connectdb from "./db/connect.js"
 import authRouter from "./router/authRoutes.js"
@@ -10,6 +11,7 @@ import errorHandler from "./middleware/error-handler.js";
 
 import dotenv from "dotenv"
 dotenv.config()
+app.use(cors);
 app.use(express.json())
 app.get("/", (req, res) => {
     // throw new Error('ERROR')
